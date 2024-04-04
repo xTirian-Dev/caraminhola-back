@@ -12,15 +12,15 @@ app.use(cors({
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,  
 }));
+const PORT = process.env.PORT || 4000;
 dotenv.config();
 const route = Router();
 
 app.use(express.json());
-
 route.get("/", notMorgan, (req: Request, res: Response) => {
   res.status(200).json({ message: "hello world with Typescript" });
 });
 
 app.use(route);
 
-app.listen(3333, () => "server running on port 3333");
+app.listen(PORT, () => `server running on port ${PORT}`);
