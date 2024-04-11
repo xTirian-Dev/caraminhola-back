@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 
 import { Router, Request, Response } from "express";
 import { notMorgan } from "./utils/notMorgan";
+import { routes } from "./setRoutes.routes";
 
 const app = express();
 app.use(cors({
@@ -12,15 +13,14 @@ app.use(cors({
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,  
 }));
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 8000;
 dotenv.config();
-const route = Router();
 
 app.use(express.json());
-route.get("/", notMorgan, (req: Request, res: Response) => {
+app.get("/", notMorgan, (req: Request, res: Response) => {
   res.status(200).json({ message: "hello world with Typescript" });
 });
 
-app.use(route);
+routes(app);
 
 app.listen(PORT, () => `server running on port ${PORT}`);
