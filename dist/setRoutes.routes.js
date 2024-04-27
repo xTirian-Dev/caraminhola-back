@@ -13,6 +13,7 @@ exports.routes = void 0;
 const express_1 = require("express");
 const startGame_service_1 = require("./useCases/setMiniGame/startGame.service");
 const handleLevel_service_1 = require("./useCases/setMiniGame/handleLevel.service");
+const handleNewWord_service_1 = require("./useCases/setMiniGame/handleNewWord.service");
 const routes = (app) => {
     app.use('/caraminhola', (0, express_1.Router)().post('/game', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         try {
@@ -36,6 +37,18 @@ const routes = (app) => {
         try {
             const caraminhola = yield new handleLevel_service_1.HandleLevel().execute(id);
             return res.status(200).json({ caraminhola });
+        }
+        catch (error) {
+            return res.status(400).json({ error: error.message });
+        }
+    })));
+    app.use('/caraminhola', (0, express_1.Router)().post('/new-word', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+        const { newWord, currentWordId } = req.body;
+        try {
+            const registrarCaraminhola = yield new handleNewWord_service_1.HandleNewWord().execute(newWord, currentWordId);
+            if (!registrarCaraminhola)
+                throw new Error("something went wrong");
+            return res.status(200).json(registrarCaraminhola);
         }
         catch (error) {
             return res.status(400).json({ error: error.message });

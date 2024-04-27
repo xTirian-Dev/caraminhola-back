@@ -35,7 +35,6 @@ class SelectWordRule {
         return false;
     }
     insertSelectedWords({ alreadySelectedWordsIncome, }) {
-        console.log(alreadySelectedWordsIncome);
         if (alreadySelectedWordsIncome)
             alreadySelectedWordsIncome.forEach((word) => {
                 this.alreadySelectedWords.push(word);
@@ -45,7 +44,6 @@ class SelectWordRule {
         this.alreadySelectedWords = [];
     }
     handleSelectedWord({ alreadySelectedWordsIncome, selectedWordNow, }) {
-        console.log(alreadySelectedWordsIncome);
         if ((alreadySelectedWordsIncome === null || alreadySelectedWordsIncome === void 0 ? void 0 : alreadySelectedWordsIncome.length) !== 0)
             this.insertSelectedWords({ alreadySelectedWordsIncome });
         if (!selectedWordNow)

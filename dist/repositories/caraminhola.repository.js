@@ -18,6 +18,7 @@ class caraminholaRepository {
     constructor() {
         this.findFirst = prismaConfig_1.default.caraminhola.findFirst;
         this.findMany = prismaConfig_1.default.caraminhola.findMany;
+        this.create = prismaConfig_1.default.caraminhola.create;
     }
     getCaraminhola(id) {
         return __awaiter(this, void 0, void 0, function* () {

@@ -19,7 +19,9 @@ class HandleLevel {
     }
     getStartCaraminhoa() {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.caraminholaRepository.findFirst({ where: { content: "caraminhola" } });
+            return yield this.caraminholaRepository.findFirst({
+                where: { content: "caraminhola" },
+            });
         });
     }
     shuffleArray(array) {
@@ -43,9 +45,9 @@ class HandleLevel {
             const caraminholaRelationCardsSelect = yield this.caraminholaRepository.findMany({
                 where: {
                     id: {
-                        in: caraminholaRelationShuffle.slice(0, 2)
-                    }
-                }
+                        in: caraminholaRelationShuffle.slice(0, 3),
+                    },
+                },
             });
             const caraminholaModel = Object.assign(Object.assign({}, caraminhola), { Caraminhola_relation: caraminholaRelationCardsSelect });
             return caraminholaModel;

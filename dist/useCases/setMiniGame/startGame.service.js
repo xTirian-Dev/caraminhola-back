@@ -45,7 +45,6 @@ class StartGameService {
                 selectedWordNow: levelProps.selectedWordNow,
             });
             const verifyTimeRule = this.TimeRule.validate(remainTime);
-            console.log(verifyTimeRule);
             if (verifySelectWordRule.isWordSelectedBefore || !verifyTimeRule) {
                 life = this.lifeRule.removeLife(life);
             }

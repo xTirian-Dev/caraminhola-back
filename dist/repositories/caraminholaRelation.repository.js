@@ -9,6 +9,7 @@ class caraminholaRelationReposirory {
     constructor() {
         this.findFirst = prismaConfig_1.default.caraminhola_Relation.findFirst;
         this.findMany = prismaConfig_1.default.caraminhola_Relation.findMany;
+        this.create = prismaConfig_1.default.caraminhola_Relation.create;
     }
 }
 exports.caraminholaRelationReposirory = caraminholaRelationReposirory;
