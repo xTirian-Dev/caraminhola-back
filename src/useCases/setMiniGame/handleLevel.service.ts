@@ -24,18 +24,17 @@ export class HandleLevel {
     if(!caraminhola) throw new Error("Caraminhola not found");
 
     const caraminholaRelation = caraminhola?.Caraminhola_relation.map((relation) => {
-      return relation.caraminhola_id_relation
+      return relation.caraminhola_id
     });
     if(!caraminholaRelation?.length) throw new Error("Caraminhola Relation not found");
 
     const caraminholaRelationShuffle = this.shuffleArray(caraminholaRelation);
 
-    const caraminholaRelationCardsSelect = this.caraminholaRepository.findMany({
+    const caraminholaRelationCardsSelect = await this.caraminholaRepository.findMany({
       where: {
         id: {
           in: caraminholaRelationShuffle.slice(0, 3)
         }
-      
       }
     })
 

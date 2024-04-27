@@ -7,6 +7,7 @@ import { notMorgan } from "./utils/notMorgan";
 import { routes } from "./setRoutes.routes";
 
 const app = express();
+app.use(express.json());
 app.use(cors({
   origin: "*",
   methods: ["GET", "POST"],

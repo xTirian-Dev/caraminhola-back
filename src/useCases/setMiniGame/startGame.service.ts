@@ -9,15 +9,16 @@ export class StartGameService {
   private readonly SelectWordRule = new SelectWordRule();
   private readonly TimeRule = new TimeRule();
 
-  private startGame(): ILevelResponse {
+   private async startGame(): Promise<ILevelResponse> {
     return {
       life: this.lifeRule.getStartLife(),
       score: this.ScoreRule.startScoreValue(),
+      word: await this.SelectWordRule.selectFirstWord(),
       alreadySelectedWords: [],
     };
   }
 
-  private playLevel(levelProps: IStartLevel): ILevelResponse {
+  private async playLevel(levelProps: IStartLevel): Promise<ILevelResponse> {
     if (
       levelProps.remainLife === undefined ||
       levelProps.score === undefined ||
@@ -33,6 +34,7 @@ export class StartGameService {
       selectedWordNow: levelProps.selectedWordNow,
     });
     const verifyTimeRule = this.TimeRule.validate(remainTime);
+    console.log(verifyTimeRule)
     if (verifySelectWordRule.isWordSelectedBefore || !verifyTimeRule) {
       life = this.lifeRule.removeLife(life);
     }
@@ -42,11 +44,11 @@ export class StartGameService {
         typeOfScore: "normal",
       });
     }
-
     return {
       life: life,
       score: score,
       alreadySelectedWords: verifySelectWordRule.alreadySelectedWords,
+      word: undefined
     };
   }
 
@@ -57,11 +59,11 @@ export class StartGameService {
       !gameProps.selectedWordNow &&
       !gameProps.remainTime
     ) {
-      return this.startGame();
+      return await this.startGame();
     }
 
     return {
-      ...this.playLevel(gameProps),
+      ... await this.playLevel(gameProps),
     };
   }
 }
@@ -78,4 +80,5 @@ interface ILevelResponse {
   life: number;
   score: number;
   alreadySelectedWords: string[];
+  word: any
 }

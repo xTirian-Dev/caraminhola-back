@@ -5,7 +5,6 @@ import { HandleLevel } from './useCases/setMiniGame/handleLevel.service';
 export const routes = (app: Express): void => {
   app.use('/caraminhola', Router().post('/game', async (req: Request, res: Response) => {
     try {
-
       const start = await new StartGameService().execute({
         remainLife: req.body.remainLife,
         score: req.body.score,
@@ -27,14 +26,11 @@ export const routes = (app: Express): void => {
   app.use('/caraminhola', Router().post('/new-level', async (req: Request, res: Response) => {
     const { id } = req.body
     // TODO: SEMPRE COMEÇA COM A CARAMINHOLA   
-
     try {
-      const caraminhoa = await new HandleLevel().execute(id)
-      return res.status(200).json({ caraminhoa });
+      const caraminhola = await new HandleLevel().execute(id)
+      return res.status(200).json({ caraminhola });
     } catch (error: any) {
       return res.status(400).json({ error: error.message });
     }
-
-
   }))
 }
