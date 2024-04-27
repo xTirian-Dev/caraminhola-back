@@ -34,7 +34,6 @@ export class SelectWordRule {
   private insertSelectedWords({
     alreadySelectedWordsIncome,
   }: ISelectWord): void {
-    console.log(alreadySelectedWordsIncome)
     if (alreadySelectedWordsIncome)
       alreadySelectedWordsIncome.forEach((word) => {
         this.alreadySelectedWords.push(word);
@@ -49,7 +48,6 @@ export class SelectWordRule {
     alreadySelectedWordsIncome,
     selectedWordNow,
   }: ISelectWord): ISelectWordResponse {
-    console.log(alreadySelectedWordsIncome)
     if (alreadySelectedWordsIncome?.length !== 0)
       this.insertSelectedWords({ alreadySelectedWordsIncome });
     if (!selectedWordNow) throw new Error("selectedWordNow is required");

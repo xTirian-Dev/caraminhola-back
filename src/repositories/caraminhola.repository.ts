@@ -16,4 +16,6 @@ export class caraminholaRepository {
       },
     });
   }
+
+  public create = prisma.caraminhola.create;
 }
