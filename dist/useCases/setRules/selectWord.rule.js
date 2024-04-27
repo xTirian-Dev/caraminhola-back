@@ -15,9 +15,12 @@ class SelectWordRule {
                 content: 'Caraminhola'
             },
             select: {
+                id: true,
                 content: true,
+                description: true,
+                label: true,
+                type: true,
                 Caraminhola_relation: true,
-                id: true
             }
         });
         return firstWord;

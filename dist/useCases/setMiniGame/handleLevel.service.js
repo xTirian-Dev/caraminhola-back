@@ -43,7 +43,7 @@ class HandleLevel {
             const caraminholaRelationCardsSelect = yield this.caraminholaRepository.findMany({
                 where: {
                     id: {
-                        in: caraminholaRelationShuffle.slice(0, 3)
+                        in: caraminholaRelationShuffle.slice(0, 2)
                     }
                 }
             });

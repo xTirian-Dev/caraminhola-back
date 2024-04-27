@@ -23,7 +23,12 @@ class caraminholaRepository {
         return __awaiter(this, void 0, void 0, function* () {
             return yield prismaConfig_1.default.caraminhola.findUnique({
                 where: { id },
-                include: {
+                select: {
+                    id: true,
+                    content: true,
+                    description: true,
+                    label: true,
+                    type: true,
                     Caraminhola_relation: true,
                 },
             });
