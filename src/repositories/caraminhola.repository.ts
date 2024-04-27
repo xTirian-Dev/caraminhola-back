@@ -6,7 +6,12 @@ export class caraminholaRepository {
   public async getCaraminhola(id: string) {
     return await prisma.caraminhola.findUnique({
       where: { id },
-      include: {
+      select:{
+        id: true,
+        content: true,
+        description: true,
+        label: true,
+        type: true,
         Caraminhola_relation: true,
       },
     });
