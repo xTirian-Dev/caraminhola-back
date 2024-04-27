@@ -33,7 +33,7 @@ export class HandleLevel {
     const caraminholaRelationCardsSelect = await this.caraminholaRepository.findMany({
       where: {
         id: {
-          in: caraminholaRelationShuffle.slice(0, 3)
+          in: caraminholaRelationShuffle.slice(0, 2)
         }
       }
     })
